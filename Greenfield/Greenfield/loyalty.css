@@ -1,0 +1,1040 @@
+/* ===== LOYALTY PAGE ===== */
+
+:root {
+  --primary: #004D44;
+  --secondary: #FFA500;
+  --light: #FAF0E6;
+  --border: #E8E8E8;
+  --text: #333;
+  --text-light: #666;
+  --success: #4CAF50;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  background: #FAF0E6;
+}
+
+/* ===== HEADER ===== */
+.header-navbar {
+  background: #FAF0E6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 36px;
+  font-size: 1em;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  box-shadow: 0 1.5px 9px 0 rgba(0,0,0,0.06);
+  min-height: 60px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-logo {
+  height: 32px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.header-brand {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: #004D44;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.header-home-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.header-home-link:focus {
+  outline: 2px solid #fbae17;
+}
+
+nav {
+  flex: 1;
+  margin: 0 40px;
+}
+
+.header-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-wrap: nowrap;
+}
+
+.header-links li {
+  white-space: nowrap;
+}
+
+.header-links a {
+  color: #004D44;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.9em;
+  padding: 3px 0;
+  transition: color 0.15s;
+}
+
+.header-links a:hover,
+.header-links a:focus {
+  color: #007960;
+}
+
+.header-links a.active {
+  font-weight: 500;
+  color: #006c58;
+}
+
+.header-auth {
+  display: flex;
+  gap: 25px;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.header-auth a {
+  color: #004D44;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.9em;
+  transition: color 0.18s;
+  white-space: nowrap;
+}
+
+.header-auth a:hover,
+.header-auth a:focus {
+  color: #007960;
+}
+
+@media (max-width: 1100px) {
+  nav {
+    margin: 0 20px;
+  }
+
+  .header-links {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header-navbar {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+  }
+
+  .header-home-link {
+    order: 1;
+    flex: 0 0 auto;
+  }
+
+  nav {
+    order: 3;
+    flex: 0 0 100%;
+    margin: 12px 0;
+  }
+
+  .header-links {
+    justify-content: flex-start;
+    gap: 15px;
+  }
+
+  .header-auth {
+    order: 2;
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 650px) {
+  .header-navbar {
+    padding: 10px 15px;
+  }
+
+  .header-brand {
+    font-size: 0.85em;
+  }
+
+  .header-links {
+    gap: 10px;
+    font-size: 0.85em;
+  }
+
+  .header-auth {
+    gap: 12px;
+    font-size: 0.85em;
+  }
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #004D44;
+  color: #fff;
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 5vw 10px 5vw;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.logo-col {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 190px;
+  max-width: 290px;
+}
+
+.footer-logo {
+  height: 32px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.footer-brand {
+  display: block;
+  font-weight: bold;
+  font-size: 1.05em;
+  margin-bottom: 2px;
+  color: #fff;
+}
+
+.footer-info {
+  flex: 1;
+}
+
+.footer-desc {
+  margin: 0 0 7px 0;
+  color: #fff;
+  font-size: 0.97em;
+  line-height: 1.5;
+}
+
+.footer-social {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 29px;
+  height: 29px;
+  background: #222;
+  color: #fff;
+  border-radius: 6px;
+  font-size: 1.1em;
+  transition: background 0.2s, color 0.2s, box-shadow 0.15s;
+  text-decoration: none;
+}
+
+.footer-social a:hover,
+.footer-social a:focus {
+  background: #fbae17;
+  color: #004D44;
+  box-shadow: 0 0 8px #fbae17cc, 0 1.5px 6px #0002;
+}
+
+.footer-links-group {
+  display: flex;
+  gap: 19px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 4px;
+}
+
+.footer-col ul a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.97em;
+  padding: 2.5px 0;
+  transition: color 0.15s, box-shadow 0.18s, font-weight 0.12s;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.footer-col ul a.active,
+.footer-col ul a:hover,
+.footer-col ul a:focus {
+  color: #fbae17;
+  font-weight: 600;
+  box-shadow: 0 0 7px #fbae17aa;
+  outline: none;
+}
+
+.mid-col {
+  min-width: 180px;
+  max-width: 240px;
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.footer-mid-title {
+  font-size: 1.08em;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #fbae17;
+}
+
+.footer-contact-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+  font-size: 0.98em;
+  gap: 7px;
+}
+
+.footer-contact-row i {
+  color: #fbae17;
+  font-size: 1em;
+}
+
+.footer-link {
+  color: #fff;
+  text-decoration: none;
+  word-break: break-all;
+  transition: color 0.18s, box-shadow 0.16s;
+  border-radius: 3px;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+  color: #fbae17;
+  box-shadow: 0 0 7px #fbae17aa, 0 1px 3px #0002;
+  outline: none;
+}
+
+.footer-bar {
+  background: #fbae17;
+  color: #222;
+  text-align: center;
+  font-size: 0.99em;
+  padding: 5px 0 5px 0;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+  margin-top: 0;
+}
+
+@media (max-width: 950px) {
+  .footer-main {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 17px;
+    padding: 22px 5vw 10px 5vw;
+  }
+  .footer-links-group {
+    flex-direction: row;
+    gap: 14px;
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+  .mid-col {
+    margin: 15px 0 4px 0;
+  }
+}
+
+/* ===== LOYALTY PAGE CONTENT ===== */
+
+.loyalty-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Hero Section */
+.loyalty-hero {
+  background: linear-gradient(135deg, var(--primary), #003d35);
+  color: white;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.loyalty-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loyalty-hero h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 52px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.loyalty-hero p {
+  font-size: 18px;
+  opacity: 0.95;
+  margin: 0;
+}
+
+/* How It Works Section */
+.loyalty-how-it-works {
+  background: white;
+  padding: 80px 40px;
+}
+
+.loyalty-how-it-works h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 0;
+}
+
+.how-it-works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.how-card {
+  background: linear-gradient(135deg, #FAF0E6, #FFF9F0);
+  padding: 40px 30px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.how-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 77, 68, 0.15);
+}
+
+.how-number {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: var(--secondary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(255, 165, 0, 0.3);
+}
+
+.how-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--primary), #003d35);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+  font-size: 32px;
+  margin: 20px auto 20px;
+}
+
+.how-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+.how-card p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Loyalty Tiers Section */
+.loyalty-tiers {
+  background: linear-gradient(135deg, #FAF0E6, #FFF9F0);
+  padding: 80px 40px;
+}
+
+.loyalty-tiers h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 0;
+}
+
+.tiers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.tier-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.tier-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 77, 68, 0.15);
+}
+
+.tier-card.featured {
+  border: 3px solid var(--secondary);
+  transform: scale(1.05);
+}
+
+.tier-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--secondary);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+.tier-header {
+  padding: 30px 20px;
+  color: white;
+  text-align: center;
+}
+
+.tier-header.bronze {
+  background: linear-gradient(135deg, #8B6F47, #7A5C36);
+}
+
+.tier-header.silver {
+  background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
+}
+
+.tier-header.gold {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.tier-header.platinum {
+  background: linear-gradient(135deg, #E5E4E2, #9EA0A0);
+}
+
+.tier-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.tier-header h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.tier-body {
+  padding: 25px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.tier-requirement {
+  font-size: 13px;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.tier-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  flex: 1;
+}
+
+.tier-benefits li {
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tier-benefits i {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.tier-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tier-status {
+  background: linear-gradient(135deg, var(--primary), #003d35);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 13px;
+  text-align: center;
+}
+
+.btn-upgrade {
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-upgrade:hover {
+  background: #003d35;
+  transform: translateY(-2px);
+}
+
+/* Rewards Section */
+.loyalty-rewards {
+  background: white;
+  padding: 80px 40px;
+}
+
+.loyalty-rewards h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 0;
+}
+
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.reward-card {
+  background: linear-gradient(135deg, #FAF0E6, #FFF9F0);
+  padding: 30px 20px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.reward-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 77, 68, 0.15);
+}
+
+.reward-points {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-bottom: 12px;
+}
+
+.reward-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.reward-card p {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.btn-redeem {
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-redeem:hover {
+  background: #003d35;
+  transform: translateY(-2px);
+}
+
+/* Points Section */
+.loyalty-points-section {
+  background: linear-gradient(135deg, var(--primary), #003d35);
+  padding: 80px 40px;
+  color: white;
+}
+
+.points-card {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.points-left h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.points-display {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.points-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 54px;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+.points-label {
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.points-info {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary), #FFB84D);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.points-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+.points-stat {
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.stat-value {
+  display: block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+/* FAQ Section */
+.loyalty-faq {
+  background: white;
+  padding: 80px 40px;
+}
+
+.loyalty-faq h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 0;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.faq-item {
+  background: linear-gradient(135deg, #FAF0E6, #FFF9F0);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.faq-question {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: white;
+}
+
+.faq-question h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+}
+
+.faq-question i {
+  color: var(--secondary);
+  transition: transform 0.3s;
+}
+
+.faq-answer {
+  padding: 0 25px 25px 25px;
+  background: linear-gradient(135deg, #FAF0E6, #FFF9F0);
+  display: none;
+}
+
+.faq-answer.active {
+  display: block;
+}
+
+.faq-answer p {
+  font-size: 13px;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.faq-question.active i {
+  transform: rotate(180deg);
+}
+
+/* CTA Section */
+.loyalty-cta {
+  background: linear-gradient(135deg, var(--primary), #003d35);
+  color: white;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.loyalty-cta h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+.loyalty-cta p {
+  font-size: 16px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  margin-top: 0;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--secondary), #FF9500);
+  color: var(--primary);
+  padding: 14px 32px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #FF9500, #FF8800);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 165, 0, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .loyalty-container {
+    padding: 0 30px;
+  }
+
+  .points-card {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .points-right {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .tier-card.featured {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .loyalty-hero {
+    padding: 50px 20px;
+  }
+
+  .loyalty-hero h1 {
+    font-size: 32px;
+  }
+
+  .loyalty-hero p {
+    font-size: 15px;
+  }
+
+  .loyalty-how-it-works,
+  .loyalty-tiers,
+  .loyalty-rewards,
+  .loyalty-points-section,
+  .loyalty-faq,
+  .loyalty-cta {
+    padding: 50px 20px;
+  }
+
+  .loyalty-container {
+    padding: 0 0;
+  }
+
+  .loyalty-how-it-works h2,
+  .loyalty-tiers h2,
+  .loyalty-rewards h2,
+  .loyalty-faq h2,
+  .loyalty-cta h2 {
+    font-size: 28px;
+  }
+
+  .how-it-works-grid,
+  .tiers-grid,
+  .rewards-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .points-card {
+    padding: 25px;
+  }
+
+  .points-display {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .points-number {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loyalty-hero h1 {
+    font-size: 24px;
+  }
+
+  .how-card {
+    padding: 25px 20px;
+  }
+
+  .tier-card.featured {
+    border: 2px solid var(--secondary);
+  }
+
+  .reward-card {
+    padding: 20px 15px;
+  }
+
+  .reward-points {
+    font-size: 24px;
+  }
+
+  .faq-question {
+    padding: 15px;
+  }
+
+  .faq-question h4 {
+    font-size: 14px;
+  }
+}

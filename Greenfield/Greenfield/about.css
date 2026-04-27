@@ -1,0 +1,1032 @@
+/* Main About Page color variables */
+:root {
+  --gf-about-primary: #004D44;
+  --gf-about-secondary: #FFA500;
+  --gf-about-light: #FAF0E6;
+  --gf-about-border: #E8E8E8;
+  --gf-about-text: #333;
+  --gf-about-text-light: #666;
+  --gf-about-transition: 0.3s ease;
+}
+
+/* Global reset for spacing + box model */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base body styling for About page */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--gf-about-light);
+  color: var(--gf-about-text);
+  line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+/* Global header styling */
+.gf-header-navbar {
+  background: var(--gf-about-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 36px;
+  font-size: 1em;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  box-shadow: 0 1.5px 9px 0 rgba(0,0,0,0.06);
+  min-height: 60px;
+}
+
+.gf-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gf-header-logo {
+  height: 32px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.gf-header-brand {
+  font-size: 0.95em;
+  font-weight: 600;
+  color: var(--gf-about-primary);
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.gf-header-home-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.gf-header-home-link:focus {
+  outline: 2px solid #fbae17;
+}
+
+.gf-nav {
+  flex: 1;
+  margin: 0 40px;
+}
+
+.gf-header-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-wrap: nowrap;
+}
+
+.gf-header-links li {
+  white-space: nowrap;
+}
+
+.gf-header-links a {
+  color: var(--gf-about-primary);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.9em;
+  padding: 3px 0;
+  transition: color 0.15s;
+}
+
+.gf-header-links a:hover,
+.gf-header-links a:focus {
+  color: #007960;
+}
+
+.gf-header-links a.gf-active {
+  font-weight: 500;
+  color: #006c58;
+}
+
+.gf-auth-box {
+  display: flex;
+  gap: 25px;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.gf-auth-box a {
+  color: var(--gf-about-primary);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 0.9em;
+  transition: color 0.18s;
+  white-space: nowrap;
+}
+
+.gf-auth-box a:hover,
+.gf-auth-box a:focus {
+  color: #007960;
+}
+
+/* Header responsive adjustments */
+@media (max-width: 1100px) {
+  .gf-nav {
+    margin: 0 20px;
+  }
+  .gf-header-links {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .gf-header-navbar {
+    flex-wrap: wrap;
+    padding: 12px 20px;
+  }
+  .gf-header-home-link {
+    order: 1;
+    flex: 0 0 auto;
+  }
+  .gf-nav {
+    order: 3;
+    flex: 0 0 100%;
+    margin: 12px 0;
+  }
+  .gf-header-links {
+    justify-content: flex-start;
+    gap: 15px;
+  }
+  .gf-auth-box {
+    order: 2;
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 650px) {
+  .gf-header-navbar {
+    padding: 10px 15px;
+  }
+  .gf-header-brand {
+    font-size: 0.85em;
+  }
+  .gf-header-links {
+    gap: 10px;
+    font-size: 0.85em;
+  }
+  .gf-auth-box {
+    gap: 12px;
+    font-size: 0.85em;
+  }
+}
+
+/* Hero section layout + intro content */
+.gf-about-hero {
+  background: linear-gradient(135deg, var(--gf-about-primary), #003d35);
+  color: white;
+  padding: 60px 40px;
+}
+
+/* Hero grid with text + image */
+.gf-about-hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Hero title styling */
+.gf-about-hero-left h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+/* Hero description text */
+.gf-about-hero-left > p {
+  font-size: 16px;
+  opacity: 0.95;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+
+/* Stats grid under hero text */
+.gf-about-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Individual stat number */
+.gf-about-stat h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--gf-about-secondary);
+  margin-bottom: 8px;
+}
+
+/* Individual stat label */
+.gf-about-stat p {
+  font-size: 13px;
+  opacity: 0.9;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Hero image styling */
+.gf-about-hero-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 77, 68, 0.25);
+}
+
+/* MVV (Mission / Vision / Values) section wrapper */
+.gf-about-mvv-section {
+  background: white;
+  padding: 80px 40px;
+}
+
+/* MVV responsive grid */
+.gf-about-mvv-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+/* MVV card styling */
+.gf-about-mvv-card {
+  background: linear-gradient(135deg, var(--gf-about-light), #FFF9F0);
+  padding: 40px;
+  border-radius: 16px;
+  border-left: 4px solid var(--gf-about-secondary);
+  transition: all var(--gf-about-transition);
+}
+
+/* MVV hover elevation */
+.gf-about-mvv-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 77, 68, 0.1);
+}
+
+/* MVV icon styling */
+.gf-about-mvv-card i {
+  font-size: 28px;
+  color: var(--gf-about-primary);
+  background: linear-gradient(135deg, var(--gf-about-primary), #003d35);
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gf-about-secondary);
+  margin-bottom: 20px;
+}
+
+/* MVV card title */
+.gf-about-mvv-card h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gf-about-primary);
+  margin-bottom: 15px;
+}
+
+/* MVV card text */
+.gf-about-mvv-card p {
+  font-size: 14px;
+  color: var(--gf-about-text-light);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Why section layout container */
+.gf-about-why-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Why section title styling */
+.gf-about-why-left h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--gf-about-secondary);
+  margin-bottom: 20px;
+}
+
+/* Why section intro paragraph */
+.gf-about-why-left > p {
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  opacity: 0.95;
+}
+
+/* Why section bullet list wrapper */
+.gf-about-why-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual bullet row */
+.gf-about-why-list li {
+  font-size: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Checkmark icon styling */
+.gf-about-why-list i {
+  color: var(--gf-about-secondary);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Why section image */
+.gf-about-why-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Timeline section background + spacing */
+.gf-about-timeline-section {
+  background: linear-gradient(135deg, #EEE0D0, var(--gf-about-light));
+  padding: 80px 40px;
+}
+
+/* Timeline container width + centering */
+.gf-about-timeline-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Timeline section title */
+.gf-about-timeline-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--gf-about-primary);
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* Timeline grid layout */
+.gf-about-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+/* Individual timeline card */
+.gf-about-timeline-item {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-top: 4px solid var(--gf-about-secondary);
+  transition: transform var(--gf-about-transition);
+}
+
+/* Timeline hover lift */
+.gf-about-timeline-item:hover {
+  transform: translateY(-5px);
+}
+
+/* Year label styling */
+.gf-about-year {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gf-about-secondary);
+}
+
+/* Timeline card title */
+.gf-about-timeline-item h3 {
+  color: var(--gf-about-primary);
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* Timeline card description */
+.gf-about-timeline-item p {
+  color: var(--gf-about-text-light);
+  font-size: 13px;
+  margin: 0;
+}
+
+/* Core values section wrapper */
+.gf-about-values-section {
+  background: white;
+  padding: 80px 40px;
+}
+
+/* Core values container width */
+.gf-about-values-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Core values section title */
+.gf-about-values-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--gf-about-primary);
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* Values grid layout */
+.gf-about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* Individual value card */
+.gf-about-value-card {
+  background: linear-gradient(135deg, var(--gf-about-light), #FFF9F0);
+  padding: 35px 30px;
+  border-radius: 14px;
+  text-align: center;
+  transition: all var(--gf-about-transition);
+}
+
+/* Value card hover elevation */
+.gf-about-value-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 77, 68, 0.15);
+}
+
+/* Value card icon */
+.gf-about-value-card i {
+  font-size: 32px;
+  color: var(--gf-about-primary);
+  background: linear-gradient(135deg, var(--gf-about-primary), #003d35);
+  width: 70px;
+  height: 70px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gf-about-secondary);
+  margin: 0 auto 20px;
+}
+
+/* Value card title */
+.gf-about-value-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gf-about-primary);
+  margin-bottom: 12px;
+}
+
+/* Value card description */
+.gf-about-value-card p {
+  font-size: 13px;
+  color: var(--gf-about-text-light);
+  line-height: 1.7;
+}
+
+/* Impact section background + layout */
+.gf-about-impact-section {
+  background: linear-gradient(135deg, var(--gf-about-primary), #003d35);
+  color: white;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+/* Impact container width */
+.gf-about-impact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Impact section title */
+.gf-about-impact-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 60px;
+}
+
+/* Impact stats grid */
+.gf-about-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+/* Individual impact card */
+.gf-about-impact-card {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border: 2px solid rgba(255, 165, 0, 0.2);
+  transition: all var(--gf-about-transition);
+}
+
+/* Impact card hover effect */
+.gf-about-impact-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+/* Impact number styling */
+.gf-about-impact-number {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--gf-about-secondary);
+  margin-bottom: 10px;
+}
+
+/* Impact card description */
+.gf-about-impact-card p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Team section wrapper */
+.gf-about-team-section {
+  background: white;
+  padding: 80px 40px;
+}
+
+/* Team container width */
+.gf-about-team-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Team section title */
+.gf-about-team-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--gf-about-primary);
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* Team grid layout */
+.gf-about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+/* Individual team member card */
+.gf-about-team-member {
+  background: linear-gradient(135deg, var(--gf-about-light), #FFF9F0);
+  padding: 30px;
+  border-radius: 14px;
+  text-align: center;
+  transition: all var(--gf-about-transition);
+}
+
+/* Team card hover elevation */
+.gf-about-team-member:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 77, 68, 0.15);
+}
+
+/* Team avatar icon */
+.gf-about-avatar {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+/* Team member name */
+.gf-about-team-member h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gf-about-primary);
+  margin-bottom: 5px;
+}
+
+/* Team role label */
+.gf-about-role {
+  font-size: 13px;
+  color: var(--gf-about-secondary);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* Team bio text */
+.gf-about-bio {
+  font-size: 13px;
+  color: var(--gf-about-text-light);
+  line-height: 1.6;
+}
+
+/* CTA section background + spacing */
+.gf-about-cta-section {
+  background: linear-gradient(135deg, var(--gf-about-primary), #003d35);
+  color: white;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+/* CTA container width + centering */
+.gf-about-cta-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* CTA title styling */
+.gf-about-cta-container h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* CTA description text */
+.gf-about-cta-container p {
+  font-size: 16px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+/* CTA button layout */
+.gf-about-cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Base button styling */
+.btn {
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--gf-about-transition);
+}
+
+/* Primary CTA button */
+.btn-primary {
+  background: linear-gradient(135deg, var(--gf-about-secondary), #FF9500);
+  color: var(--gf-about-primary);
+}
+
+/* Primary button hover lift */
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 165, 0, 0.3);
+}
+
+/* Secondary CTA button */
+.btn-secondary {
+  background: white;
+  color: var(--gf-about-primary);
+  border: 2px solid white;
+}
+
+/* Secondary button hover fade */
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+}
+
+/* ===== FOOTER ===== */
+/* Footer background + text color */
+.gf-footer {
+  background: var(--gf-about-primary);
+  color: white;
+}
+
+/* Footer main layout */
+.gf-footer-main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 3fr;
+  gap: 60px;
+  padding: 60px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+/* Left column: Logo + Brand + Description + Social */
+.gf-footer-logo-col {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Logo + Brand wrapper */
+.gf-footer-logo-col > div:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Footer logo image */
+.gf-footer-logo {
+  height: 40px;
+  width: auto;
+  flex-shrink: 0;
+}
+
+/* Footer brand text */
+.gf-footer-brand {
+  display: block;
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  color: white;
+}
+
+/* Footer info text wrapper */
+.gf-footer-info {
+  flex: 1;
+}
+
+/* Footer description text */
+.gf-footer-desc {
+  margin: 0 0 15px 0;
+  color: white;
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+/* Social icon row */
+.gf-footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* Social icon buttons */
+.gf-footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+/* Social icon hover color */
+.gf-footer-social a:hover,
+.gf-footer-social a:focus {
+  background: var(--gf-about-secondary);
+  color: var(--gf-about-primary);
+}
+
+/* Middle column: Get In Touch */
+.gf-footer-mid-col {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Footer section title */
+.gf-contact-title {
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--gf-about-secondary);
+  margin-bottom: 5px;
+}
+
+/* Footer contact row layout */
+.gf-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+/* Footer contact icons */
+.gf-contact-row i {
+  color: var(--gf-about-secondary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Footer contact links */
+.gf-footer-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+/* Footer contact link hover */
+.gf-footer-link:hover,
+.gf-footer-link:focus {
+  color: var(--gf-about-secondary);
+}
+
+/* Right column: Links Grid */
+.gf-footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* Footer column wrapper */
+.gf-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Footer column title */
+.gf-footer-col h4 {
+  font-size: 0.95em;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 5px;
+}
+
+/* Footer list reset */
+.gf-footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Footer list spacing */
+.gf-footer-col ul li {
+  margin: 0;
+}
+
+/* Footer link styling */
+.gf-footer-col ul a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9em;
+  padding: 2px 0;
+  transition: color 0.15s;
+  display: inline-block;
+}
+
+/* Footer link hover highlight */
+.gf-footer-col ul a:hover,
+.gf-footer-col ul a:focus {
+  color: var(--gf-about-secondary);
+  font-weight: 600;
+}
+
+/* Footer bottom bar */
+.gf-footer-bar {
+  background: var(--gf-about-secondary);
+  color: #222;
+  text-align: center;
+  font-size: 0.95em;
+  padding: 12px 0;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+/* Footer responsive stacking */
+@media (max-width: 1200px) {
+  .gf-footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 50px 30px;
+  }
+
+  .gf-footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gf-footer-main {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 40px 20px;
+  }
+
+  .gf-footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .gf-footer-mid-col {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* RESPONSIVE ADJUSTMENTS FOR ABOUT PAGE*/
+@media (max-width: 1024px) {
+  .gf-about-hero-container,
+  .gf-about-why-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .gf-about-hero-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .gf-about-timeline {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .gf-about-hero {
+    padding: 50px 20px;
+  }
+
+  .gf-about-hero-left h1 {
+    font-size: 32px;
+  }
+
+  .gf-about-hero-stats,
+  .gf-about-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .gf-about-hero-img,
+  .gf-about-why-img {
+    height: 250px;
+  }
+
+  section {
+    padding: 50px 20px;
+  }
+
+  section h2 {
+    font-size: 28px;
+  }
+
+  .gf-about-values-grid,
+  .gf-about-team-grid,
+  .gf-about-impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gf-about-cta-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .gf-about-hero-left h1 {
+    font-size: 24px;
+  }
+
+  .gf-about-stat h3 {
+    font-size: 28px;
+  }
+
+  .gf-about-why-list li {
+    font-size: 13px;
+  }
+
+  .gf-footer-links {
+    grid-template-columns: 1fr;
+  }
+}

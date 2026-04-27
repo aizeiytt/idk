@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loyalty Scheme - Greenfield Local Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="loyalty.css">
+</head>
+<body>
+
+  <header class="header-navbar" role="banner">
+    <a href="index.html" class="header-home-link">
+      <div class="header-left">
+        <img src="images.jpg" alt="Greenfield Local Hub Logo" class="header-logo">
+        <span class="header-brand">Greenfield Local Hub</span>
+      </div>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="header-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="loyalty.html">Loyalty</a></li>
+        <li><a href="dashboard.php">Dashboard</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        <li><a href="checkout.php" data-testid="nav-basket"><i class="fas fa-shopping-basket" aria-hidden="true"></i> Basket</a></li>
+      </ul>
+    </nav>
+    <div class="header-auth">
+      <a href="login.php">Log in</a>
+      <a href="register.php">Sign up</a>
+    </div>
+  </header>
+
+  <main id="main" role="main">
+    <section class="loyalty-hero">
+      <div class="loyalty-hero-container">
+        <h1>Loyalty Rewards Program</h1>
+        <p>Earn points on every purchase and unlock exclusive rewards</p>
+      </div>
+    </section>
+
+    <section class="loyalty-how-it-works">
+      <div class="loyalty-container">
+        <h2>How It Works</h2>
+        <div class="how-it-works-grid">
+          <div class="how-card">
+            <div class="how-number">1</div>
+            <div class="how-icon">
+              <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+            <h3>Shop & Earn</h3>
+            <p>Earn 1 point for every $1 spent on purchases</p>
+          </div>
+
+          <div class="how-card">
+            <div class="how-number">2</div>
+            <div class="how-icon">
+              <i class="fas fa-gift" aria-hidden="true"></i>
+            </div>
+            <h3>Collect Points</h3>
+            <p>Points accumulate in your account instantly</p>
+          </div>
+
+          <div class="how-card">
+            <div class="how-number">3</div>
+            <div class="how-icon">
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </div>
+            <h3>Unlock Rewards</h3>
+            <p>Redeem points for discounts and exclusive offers</p>
+          </div>
+
+          <div class="how-card">
+            <div class="how-number">4</div>
+            <div class="how-icon">
+              <i class="fas fa-smile" aria-hidden="true"></i>
+            </div>
+            <h3>Enjoy Benefits</h3>
+            <p>Get VIP perks, early access, and special deals</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="loyalty-tiers">
+      <div class="loyalty-container">
+        <h2>Loyalty Tiers</h2>
+        <div class="tiers-grid">
+          <div class="tier-card">
+            <div class="tier-header bronze">
+              <div class="tier-icon">
+                <i class="fas fa-medal" aria-hidden="true"></i>
+              </div>
+              <h3>Bronze</h3>
+            </div>
+            <div class="tier-body">
+              <p class="tier-requirement">Start earning</p>
+              <ul class="tier-benefits">
+                <li><i class="fas fa-check" aria-hidden="true"></i> 1 point per $1 spent</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i> Birthday bonus</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i> Exclusive offers</li>
+              </ul>
+              <div class="tier-action">
+                <span class="tier-status">Current Tier</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-header silver">
+              <div class="tier-icon">
+                <i class="fas fa-medal" aria-hidden="true"></i>
+              </div>
+              <h3>Silver</h3>
+            </div>
+            <div class="tier-body">
+              <p class="tier-requirement">Spend $500+</p>
+              <ul class="tier-benefits">
+                <li><i class="fas fa-check" aria-hidden="true"></i> 1.5 points per $1</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i> Free delivery</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i> Early sale access</li>
+              </ul>
+              <button class="btn-upgrade">Unlock Silver</button>
+            </div>
+  
+          <div class="tier-card featured">
+            <div class="tier-badge">Most Popular</div>
+            <div class="tier-header gold">
+              <div class="tier-icon">
+                <i class="fas fa-crown" aria-hidden="true"></i>
+              </div>
+              <h3>Gold</h3>
+            </div>
+            <div class="tier-body">
+              <p class="tier-requirement">Spend $1,500+</p>
+              <ul class="tier-benefits">
+                <li><i class="fas fa-check" aria-hidden="true"></i> 2 points per $1</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i> Free premium delivery</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i> VIP priority support</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i> Exclusive events</li>
+              </ul>
+              <button class="btn-upgrade">Unlock Gold</button>
+            </div>
+          </div>
+
+          <div class="tier-card">
+            <div class="tier-header platinum">
+              <div class="tier-icon">
+                <i class="fas fa-crown" aria-hidden="true"></i>
+              </div>
+              <h3>Platinum</h3>
+            </div>
+            <div class="tier-body">
+              <p class="tier-requirement">Spend $3,000+</p>
+              <ul class="tier-benefits">
+                <li><i class="fas fa-check" aria-hidden="true"></i> 3 points per $1</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i> Priority everything</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i> Personal shopper</li>
+                <li><i class="fas fa-check" aria-hidden="true"></i> Annual gift</li>
+              </ul>
+              <button class="btn-upgrade">Unlock Platinum</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="loyalty-rewards">
+      <div class="loyalty-container">
+        <h2>Redeem Your Points</h2>
+        <div class="rewards-grid">
+          <div class="reward-card">
+            <div class="reward-points">100</div>
+            <h3>$5 Discount</h3>
+            <p>Get $5 off your next order</p>
+            <button class="btn-redeem">Redeem</button>
+          </div>
+
+          <div class="reward-card">
+            <div class="reward-points">250</div>
+            <h3>$15 Discount</h3>
+            <p>Get $15 off your next order</p>
+            <button class="btn-redeem">Redeem</button>
+          </div>
+
+          <div class="reward-card">
+            <div class="reward-points">500</div>
+            <h3>Free Delivery</h3>
+            <p>Free delivery on your next order</p>
+            <button class="btn-redeem">Redeem</button>
+          </div>
+
+          <div class="reward-card">
+            <div class="reward-points">750</div>
+            <h3>$50 Discount</h3>
+            <p>Get $50 off your next order</p>
+            <button class="btn-redeem">Redeem</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="loyalty-points-section">
+      <div class="loyalty-container">
+        <div class="points-card">
+          <div class="points-left">
+            <h3>Your Points Balance</h3>
+            <div class="points-display">
+              <span class="points-number">850</span>
+              <span class="points-label">Points</span>
+            </div>
+            <p class="points-info">You're 150 points away from unlocking Silver tier!</p>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="points-right">
+            <div class="points-stat">
+              <span class="stat-label">Total Earned</span>
+              <span class="stat-value">2,500</span>
+            </div>
+            <div class="points-stat">
+              <span class="stat-label">Total Redeemed</span>
+              <span class="stat-value">1,650</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="loyalty-faq">
+      <div class="loyalty-container">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <div class="faq-question">
+              <h4>How do I earn points?</h4>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+              <p>You earn 1 point for every $1 spent on your purchases. Higher tier members earn bonus points multipliers!</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h4>When do points expire?</h4>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Points never expire as long as you remain an active member. Just make a purchase at least once per year.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h4>Can I transfer points?</h4>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Points are personal to your account and cannot be transferred to other members.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <h4>How do I track my points?</h4>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </div>
+            <div class="faq-answer">
+              <p>Log in to your account to view your points balance, tier status, and redemption history anytime.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="loyalty-cta">
+      <div class="loyalty-container">
+        <h2>Ready to Start Earning?</h2>
+        <p>Join our loyalty program and start getting rewards on every purchase</p>
+        <a href="products.php" class="btn-primary">
+          <i class="fas fa-shopping-cart" aria-hidden="true"></i> Start Shopping
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="logo-col">
+      <img src="images.jpg" alt="Greenfield Local Hub leaf logo" class="footer-logo">
+      <div class="footer-info">
+        <span class="footer-brand">Greenfield Local Hub</span>
+        <p class="footer-desc">Empowering sustainable farming communities<br>through innovative and customer-focused digital solutions.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-col mid-col">
+      <div class="footer-mid-title">Get In Touch</div>
+      <div class="footer-contact-row"><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:info@greenfieldhub.com" class="footer-link">info@greenfieldhub.com</a></div>
+      <div class="footer-contact-row"><i class="fas fa-phone" aria-hidden="true"></i><span class="footer-link">+123 45 789 000</span></div>
+      <div class="footer-contact-row"><i class="fas fa-location-dot" aria-hidden="true"></i><span class="footer-link">Greenfield, Springfield</span></div>
+    </div>
+    <div class="footer-links-group">
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="products.php">Products</a></li>
+          <li><a href="loyalty.html">Loyalty</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="dashboard.php">Dashboard</a></li>
+          <li><a href="checkout.php">Basket</a></li>
+          <li><a href="checkout.php">Checkout</a></li>
+          <li><a href="contact.php">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Operations</h4>
+        <ul>
+          <li><a href="Delivery.php">Delivery</a></li>
+          <li><a href="stock.php">Stock</a></li>
+          <li><a href="manage.html">Management</a></li>
+          <li><a href="Psdashboard.php">Producers Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal Auth</h4>
+        <ul>
+          <li><a href="login.php">Log in</a></li>
+          <li><a href="register.php">Sign up</a></li>
+          <li><a href="legal.html">Legal</a></li>
+          <li><a href="legal.html#privacy">Privacy Policy</a></li>
+          <li><a href="legal.html#terms">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">© 2026 Greenfield Local Hub, All Rights Reserved.</div>
+</footer>
+
+  <script src="loyalty.js"></script>
+</body>
+</html>
