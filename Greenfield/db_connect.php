@@ -2,8 +2,8 @@
 // the next lines define constants for the database connection parameters, including the host, username, password, and database name. 
 // These constants are used to establish a connection to the MySQL database using the mysqli extension. The connection
 define('DB_HOST', 'localhost');
-define('DB_USER', 'GF123');
-define('DB_PASS', 'Green123');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 define('DB_NAME', 'greenfield');
 
 // here you create a new mysqli object using the defined constants to connect to the database. If the connection fails, it will output an error message and terminate the script.
