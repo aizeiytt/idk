@@ -39,7 +39,7 @@
     <div class="stock-page-header">
       <div class="header-content">
         <h1><i class="fas fa-warehouse" aria-hidden="true"></i> Stock Level Management</h1>
-        <p>Monitor, manage, and optimize your inventory levels in real-time</p>
+        <p>Monitor, manage, and optimise your inventory levels in real-time</p>
       </div>
       <button class="btn-primary" onclick="openBulkUpdateModal()">
         <i class="fas fa-arrows-alt-v" aria-hidden="true"></i> Bulk Update

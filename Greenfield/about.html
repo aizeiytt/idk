@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Character encoding -->
   <meta charset="UTF-8">
+  <!-- Responsive scaling on mobile -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - Greenfield Local Hub</title>
+  <!-- SEO description shown in search results -->
+  <meta name="description" content="Fresh organic produce from local farms delivered to your door. Support sustainable farming communities.">
+  <!-- Browser tab title -->
+  <title>Greenfield Local Hub - Fresh Organic Produce</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Main stylesheet for the home page -->
   <link rel="stylesheet" href="about.css">
 </head>
 <body>
 
+  <header class="gf-header-navbar" role="banner">
+    <a href="index.html" class="gf-header-home-link">
+      <div class="gf-header-left">
+        <img src="images.jpg" alt="Greenfield Local Hub Logo" class="gf-header-logo">
+        <span class="gf-header-brand">Greenfield Local Hub</span>
+      </div>
+    </a>
 
-<header class="gf-header-navbar">
-  <a href="index.html" class="gf-header-home-link">
-    <div class="gf-header-left">
-      <img src="images.jpg" alt="Greenfield Local Hub Logo" class="gf-header-logo">
-      <span class="gf-header-brand">Greenfield Local Hub</span>
+    <nav class="gf-nav" aria-label="Primary">
+      <ul class="gf-header-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="products.php">Products</a></li>
+        <li><a href="loyalty.html">Loyalty</a></li>
+        <li><a href="dashboard.php">Dashboard</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        <li><a href="checkout.php" i>Checkout </a></li>
+      </ul>
+    </nav>
+
+    <div class="gf-header-auth">
+      <a href="login.php">Log in</a>
+      <a href="register.php">Sign up</a>
     </div>
-  </a>
-
-  <nav class="gf-nav">
-    <ul class="gf-header-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html" class="gf-active">About us</a></li>
-      <li><a href="products.php">Products</a></li>
-      <li><a href="loyalty.html">Loyalty</a></li>
-      <li><a href="dashboard.php">Dashboard</a></li>
-      <li><a href="contact.php">Contact</a></li>
-      <li><a href="checkout.php"><i class="fas fa-shopping-basket"></i> Basket</a></li>
-    </ul>
-  </nav>
-
-  <div class="gf-auth-box">
-    <a href="login.php">Log in</a>
-    <a href="register.php">Sign up</a>
-  </div>
-</header>
+  </header>
 
 <main>
 
-  
   <section class="gf-about-hero">
     <div class="gf-about-hero-container">
 
@@ -65,11 +71,10 @@
         </div>
       </div>
 
-      <img src="farm-hero.jpg" alt="Local farm" class="gf-about-hero-img">
+      <img src="image2.jpg" alt="Local farm" class="gf-about-hero-img">
     </div>
   </section>
 
-  
   <section class="gf-about-mvv-section">
     <div class="gf-about-mvv-container">
 
@@ -91,7 +96,6 @@
     </div>
   </section>
 
-  
   <section class="gf-about-why-section">
     <div class="gf-about-why-container">
 
@@ -113,7 +117,6 @@
     </div>
   </section>
 
-  
   <section class="gf-about-timeline-section">
     <div class="gf-about-timeline-container">
       <h2>Our Journey</h2>
@@ -146,7 +149,6 @@
     </div>
   </section>
 
-  
   <section class="gf-about-values-section">
     <div class="gf-about-values-container">
       <h2>Our Core Values</h2>
@@ -193,7 +195,6 @@
     </div>
   </section>
 
-  
   <section class="gf-about-impact-section">
     <div class="gf-about-impact-container">
       <h2>Our Impact</h2>
@@ -224,7 +225,6 @@
     </div>
   </section>
 
-  
   <section class="gf-about-team-section">
     <div class="gf-about-team-container">
       <h2>Meet Our Team</h2>
@@ -263,7 +263,6 @@
     </div>
   </section>
 
-  
   <section class="gf-about-cta-section">
     <div class="gf-about-cta-container">
       <h2>Join Our Movement</h2>
@@ -282,38 +281,90 @@
   </section>
 </main>
 
-    <footer class="gf-footer">
-      <div class="gf-footer-main">
-        <div class="gf-footer-logo-col">
-          <img src="images.jpg" alt="Greenfield Logo" class="gf-footer-logo">
-          <span class="gf-footer-brand">Greenfield Local Hub</span>
-        </div>
-        <div class="gf-footer-info">
-          <p class="gf-footer-desc">Bringing fresh, organic, and local produce to your doorstep. Supporting sustainable farming in your community.</p>
-          <div class="gf-footer-social">
-            <a href="#" title="Follow on Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" title="Like on Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="#" title="Follow on Instagram"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-        <div class="gf-footer-mid-col">
-          <div class="gf-contact-title">Get in touch</div>
-          <div class="gf-contact-row"><i class="fas fa-phone"></i> <a class="gf-footer-link" href="tel:18005551234">1-800-555-1234</a></div>
-          <div class="gf-contact-row"><i class="fas fa-envelope"></i> <a class="gf-footer-link" href="mailto:info@greenfield.com">info@greenfield.com</a></div>
-        </div>
-        <div class="gf-footer-col">
-          <ul>
-            <li><a href="about.html">Our Story</a></li>
-            <li><a href="products.html">Shop</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-          </ul>
+<footer class="gf-footer" role="contentinfo">
+  <div class="gf-footer-main">
+    
+    <!-- Left Column: Logo, Brand, Description, Social -->
+    <div class="gf-footer-logo-col">
+      <div>
+        <img src="images.jpg" alt="Greenfield Local Hub leaf logo" class="gf-footer-logo">
+        <span class="gf-footer-brand">Greenfield Local Hub</span>
+      </div>
+      <div class="gf-footer-info">
+        <p class="gf-footer-desc">Empowering sustainable farming communities through innovative and customer-focused digital solutions.</p>
+        <div class="gf-footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="gf-footer-bar">
-        &copy; 2026 Greenfield Local Hub. All rights reserved.
+    </div>
+
+    <!-- Middle Column: Get In Touch -->
+    <div class="gf-footer-mid-col">
+      <div class="gf-contact-title">Get In Touch</div>
+      <div class="gf-contact-row">
+        <i class="fas fa-envelope" aria-hidden="true"></i>
+        <a href="mailto:info@greenfieldhub.com" class="gf-footer-link">info@greenfieldhub.com</a>
       </div>
-    </footer>
-  </main>
+      <div class="gf-contact-row">
+        <i class="fas fa-phone" aria-hidden="true"></i>
+        <span class="gf-footer-link">+123 45 789 000</span>
+      </div>
+      <div class="gf-contact-row">
+        <i class="fas fa-location-dot" aria-hidden="true"></i>
+        <span class="gf-footer-link">Greenfield, Springfield</span>
+      </div>
+    </div>
+
+    <!-- Right Column: 4-Column Link Grid -->
+    <div class="gf-footer-links">
+      <div class="gf-footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="products.php">Products</a></li>
+          <li><a href="loyalty.html">Loyalty</a></li>
+        </ul>
+      </div>
+
+      <div class="gf-footer-col">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="dashboard.php">Dashboard</a></li>
+          <li><a href="checkout.php">Checkout</a></li>
+          <li><a href="contact.php">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="gf-footer-col">
+        <h4>Operations</h4>
+        <ul>
+          <li><a href="Delivery.php">Delivery</a></li>
+          <li><a href="stock.php">Stock</a></li>
+          <li><a href="manage.html">Management</a></li>
+          <li><a href="Psdashboard.html">Producers Dashboard</a></li>
+        </ul>
+      </div>
+
+      <div class="gf-footer-col">
+        <h4>Legal Auth</h4>
+        <ul>
+          <li><a href="login.php">Log in</a></li>
+          <li><a href="register.php">Sign up</a></li>
+          <li><a href="legal.html">Legal</a></li>
+          <li><a href="legal.html#privacy">Privacy Policy</a></li>
+          <li><a href="legal.html#terms">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer Bar -->
+  <div class="gf-footer-bar">© 2026 Greenfield Local Hub, All Rights Reserved.</div>
+</footer>
+
 </body>
 </html>

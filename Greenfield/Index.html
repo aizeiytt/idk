@@ -9,69 +9,60 @@
   <meta name="description" content="Fresh organic produce from local farms delivered to your door. Support sustainable farming communities.">
   <!-- Browser tab title -->
   <title>Greenfield Local Hub - Fresh Organic Produce</title>
-  <!-- Google Fonts (placeholder URL) -->
-  <link href="https://googleapis.com" rel="stylesheet">
-  <!-- Font Awesome (placeholder URL) -->
-  <link rel="stylesheet" href="https://cloudflare.com"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <!-- Main stylesheet for the home page -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="gf-header" role="banner">
-    <!-- Clickable logo + brand name -->
-    <a href="index.php" class="gf-home-link">
+  <header class="gf-header-navbar" role="banner">
+    <a href="index.html" class="gf-header-home-link">
       <div class="gf-header-left">
-        <img src="images.jpg" alt="Greenfield Local Hub Logo" class="gf-logo">
-        <span class="gf-brand-name">Greenfield Local Hub</span>
+        <img src="images.jpg" alt="Greenfield Local Hub Logo" class="gf-header-logo">
+        <span class="gf-header-brand">Greenfield Local Hub</span>
       </div>
     </a>
 
     <nav class="gf-nav" aria-label="Primary">
-      <ul class="gf-nav-links">
+      <ul class="gf-header-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About us</a></li>
         <li><a href="products.php">Products</a></li>
         <li><a href="loyalty.html">Loyalty</a></li>
         <li><a href="dashboard.php">Dashboard</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <!-- Basket link with testing hook -->
-        <li><a href="checkout.php" data-testid="nav-basket"><i class="fas fa-shopping-basket" aria-hidden="true"></i> Basket</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        <li><a href="checkout.php" i>Checkout </a></li>
       </ul>
     </nav>
 
-    <div class="gf-auth-box">
+    <div class="gf-header-auth">
       <a href="login.php">Log in</a>
       <a href="register.php">Sign up</a>
     </div>
   </header>
 
-  <!-- Main content wrapper and id is used by skip-links and by JS -->
   <main id="main-content" role="main">
-
 
     <section class="gf-hero-section">
       <div class="gf-hero-container">
-        <!-- Left column: trust badge + title + copy + stats + CTA buttons -->
         <div class="gf-hero-text-side">
-          <!-- Small badge above the headline -->
           <div class="gf-hero-badge">
             <i class="fas fa-leaf" aria-hidden="true"></i>
             <span>100% Organic & Local</span>
           </div>
 
-          <!-- Main hero headline (with a coloured accent span) -->
           <h1 class="gf-hero-title">
             Fresh Produce<br>
             <span class="gf-highlight">Delivered to Your Door</span>
           </h1>
 
-          <!-- Short hero description paragraph -->
           <p class="gf-hero-description">
             Support local farmers and enjoy the freshest organic produce. Sustainable farming for a healthier tomorrow.
           </p>
 
-          <!-- Three-up stats grid (animated by index.js) -->
           <div class="gf-stats-grid">
             <div class="gf-farm-stat">
               <h3>500+</h3>
@@ -87,31 +78,23 @@
             </div>
           </div>
 
-       
           <div class="gf-hero-cta">
-          
             <a href="products.php" class="gf-go-shop">
               <i class="fas fa-shopping-cart" aria-hidden="true"></i> Shop Now
             </a>
-            
             <a href="about.html" class="gf-go-about">
               Learn More <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
           </div>
         </div>
 
-        <!-- Right column: hero image + floating info tags -->
         <div class="gf-hero-right">
           <div class="gf-hero-images">
-            <!-- Main hero photo card -->
             <div class="gf-showcase-card gf-main-card">
               <img src="veggies.jpg" alt="Fresh assorted vegetables">
-              <!-- Floating "100% Natural" label on the photo -->
               <div class="gf-card-badge">100% Natural</div>
             </div>
-            <!-- Floating info tags (absolutely positioned over the photo) -->
             <div class="gf-floating-cards">
-              <!-- Info tag 1: fresh daily -->
               <div class="gf-float-card gf-card-1">
                 <div class="gf-card-icon"><i class="fas fa-apple-alt" aria-hidden="true"></i></div>
                 <div class="gf-card-content">
@@ -119,7 +102,6 @@
                   <p>Picked this morning</p>
                 </div>
               </div>
-              <!-- Info tag 2: fast delivery -->
               <div class="gf-float-card gf-card-2">
                 <div class="gf-card-icon"><i class="fas fa-truck" aria-hidden="true"></i></div>
                 <div class="gf-card-content">
@@ -135,15 +117,12 @@
 
     <section class="gf-features-section">
       <div class="gf-features-container">
-        <!-- Section heading block -->
         <div class="gf-section-header-wrapper">
           <h2>Why Choose Greenfield?</h2>
           <p class="gf-section-subtitle">Experience the difference</p>
         </div>
 
-        <!-- Grid of feature cards -->
         <div class="gf-why-choose-grid">
-          <!-- Feature 1: 100% Organic -->
           <div class="gf-why-card">
             <div class="gf-card-number">01</div>
             <div class="gf-card-icon-large"><i class="fas fa-leaf" aria-hidden="true"></i></div>
@@ -151,7 +130,6 @@
             <p>Certified organic, protecting your health and the environment.</p>
             <a href="about.html" class="gf-learn-more">Learn more →</a>
           </div>
-          <!-- Feature 2: Locally Grown -->
           <div class="gf-why-card">
             <div class="gf-card-number">02</div>
             <div class="gf-card-icon-large"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
@@ -163,31 +141,45 @@
       </div>
     </section>
 
-      <footer class="gf-footer">
-</footer>
+  </main>
 
 <footer class="gf-footer" role="contentinfo">
   <div class="gf-footer-main">
+    
+    <!-- Left Column: Logo, Brand, Description, Social -->
     <div class="gf-footer-logo-col">
-      <img src="images.jpg" alt="Greenfield Local Hub leaf logo" class="gf-footer-logo">
-      <div class="gf-footer-info">
+      <div>
+        <img src="images.jpg" alt="Greenfield Local Hub leaf logo" class="gf-footer-logo">
         <span class="gf-footer-brand">Greenfield Local Hub</span>
-        <p class="gf-footer-desc">Empowering sustainable farming communities<br>through innovative and customer-focused digital solutions.</p>
+      </div>
+      <div class="gf-footer-info">
+        <p class="gf-footer-desc">Empowering sustainable farming communities through innovative and customer-focused digital solutions.</p>
         <div class="gf-footer-social">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
 
-    <div class="gf-footer-col gf-footer-mid-col">
+    <!-- Middle Column: Get In Touch -->
+    <div class="gf-footer-mid-col">
       <div class="gf-contact-title">Get In Touch</div>
-      <div class="gf-contact-row"><i class="fas fa-envelope"></i><a href="mailto:info@greenfieldhub.com" class="gf-footer-link">info@greenfieldhub.com</a></div>
-      <div class="gf-contact-row"><i class="fas fa-phone"></i><span class="gf-footer-link">+123 45 789 000</span></div>
-      <div class="gf-contact-row"><i class="fas fa-location-dot"></i><span class="gf-footer-link">Greenfield, Springfield</span></div>
+      <div class="gf-contact-row">
+        <i class="fas fa-envelope" aria-hidden="true"></i>
+        <a href="mailto:info@greenfieldhub.com" class="gf-footer-link">info@greenfieldhub.com</a>
+      </div>
+      <div class="gf-contact-row">
+        <i class="fas fa-phone" aria-hidden="true"></i>
+        <span class="gf-footer-link">+123 45 789 000</span>
+      </div>
+      <div class="gf-contact-row">
+        <i class="fas fa-location-dot" aria-hidden="true"></i>
+        <span class="gf-footer-link">Greenfield, Springfield</span>
+      </div>
     </div>
 
+    <!-- Right Column: 4-Column Link Grid -->
     <div class="gf-footer-links">
       <div class="gf-footer-col">
         <h4>Shop</h4>
@@ -203,7 +195,6 @@
         <h4>Account</h4>
         <ul>
           <li><a href="dashboard.php">Dashboard</a></li>
-          <li><a href="checkout.php">Basket</a></li>
           <li><a href="checkout.php">Checkout</a></li>
           <li><a href="contact.php">Contact</a></li>
         </ul>
@@ -215,7 +206,7 @@
           <li><a href="Delivery.php">Delivery</a></li>
           <li><a href="stock.php">Stock</a></li>
           <li><a href="manage.html">Management</a></li>
-          <li><a href="Psdashboard.php">Producers Dashboard</a></li>
+          <li><a href="Psdashboard.html">Producers Dashboard</a></li>
         </ul>
       </div>
 
@@ -230,13 +221,12 @@
         </ul>
       </div>
     </div>
+
   </div>
 
+  <!-- Footer Bar -->
   <div class="gf-footer-bar">© 2026 Greenfield Local Hub, All Rights Reserved.</div>
 </footer>
 
-    </footer>
-  </main>
 </body>
 </html>
-

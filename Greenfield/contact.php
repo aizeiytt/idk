@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($name)) {
         $errorMessage = "Full name is required.";
     } elseif (strlen($name) < 5) {
-        $errorMessage = "Full name must be at least 5 characters long (e.g., John Doe).";
+        $errorMessage = "Full name must be at least 5 characters long (e.g., David Fisher).";
     } elseif (!preg_match('/^[a-zA-Z\s\'-]+$/', $name)) {
         $errorMessage = "Full name can only contain letters, spaces, hyphens, and apostrophes.";
     } elseif (substr_count($name, ' ') < 1) {
@@ -75,47 +75,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact - Greenfield Local Hub</title>
+  <title>Contact</title>
   <link rel="stylesheet" href="contact.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+ 
 </head>
 <body>
 
-<?php
+  <?php
+// Current file's basename, used to mark the active nav item.
 $__currentPage = basename($_SERVER['PHP_SELF']);
 $__cartCount = 0;
 if (!empty($_SESSION['cart'])) foreach ($_SESSION['cart'] as $__q) $__cartCount += (int)$__q;
 ?>
-<header class="hub-topbar" role="banner">
-  <a href="index.html" class="hub-home-link">
-    <div class="hub-topbar-left">
-      <img src="images.jpg" alt="Greenfield Local Hub Logo" class="hub-logo">
-      <span class="hub-brand-name">Greenfield Local Hub</span>
+<header class="header-navbar" role="banner">
+  <a href="index.html" class="header-home-link">
+    <div class="header-left">
+      <img src="images.jpg" alt="Greenfield Local Hub Logo" class="header-logo">
+      <span class="header-brand">Greenfield Local Hub</span>
     </div>
   </a>
   <nav aria-label="Primary">
-    <ul class="hub-nav-links">
+    <ul class="header-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About us</a></li>
-      <li><a href="products.php"<?php if ($__currentPage==='products.php') echo ' class="hub-active"'; ?>>Products</a></li>
+      <li><a href="products.php"<?php if ($__currentPage==='products.php') echo ' class="active"'; ?>>Products</a></li>
       <li><a href="loyalty.html">Loyalty</a></li>
-      <li><a href="dashboard.php"<?php if ($__currentPage==='dashboard.php') echo ' class="hub-active"'; ?>>Dashboard</a></li>
-      <li><a href="contact.html"<?php if ($__currentPage==='contact.php') echo ' class="hub-active"'; ?>>Contact</a></li>
+      <li><a href="dashboard.php"<?php if ($__currentPage==='dashboard.php') echo ' class="active"'; ?>>Dashboard</a></li>
+      <li><a href="contact.html"<?php if ($__currentPage==='contact.php') echo ' class="active"'; ?>>Contact</a></li>
       <li>
-        <a href="checkout.php"<?php if ($__currentPage==='checkout.php') echo ' class="hub-active"'; ?> data-testid="nav-basket">
-          <i class="fas fa-shopping-basket" aria-hidden="true"></i> Basket<?php if ($__cartCount > 0): ?><span style="display:inline-block;min-width:18px;height:18px;padding:0 5px;margin-left:4px;background:#f4b400;color:#0a3b2c;border-radius:9px;font-size:11px;font-weight:700;text-align:center;" data-testid="cart-count"><?= $__cartCount ?></span><?php endif; ?>
+        <a href="checkout.php"<?php if ($__currentPage==='checkout.php') echo ' class="active"'; ?> data-testid="nav-basket">
+          <i class="fas fa-shopping-basket" aria-hidden="true"></i> Basket<?php if ($__cartCount > 0): ?><span style="display:inline-block;min-width:18px;height:18px;padding:0 5px;margin-left:4px;background:#f4b400;color:#0a3b2c;border-radius:9px;font-size:11px;font-weight:700;text-align:center;line-height:18px;" data-testid="cart-count"><?php echo $__cartCount; ?></span><?php endif; ?>
         </a>
       </li>
     </ul>
   </nav>
-  <div class="hub-auth-box">
+  <div class="header-auth">
+    <!-- check to see if the user is logged in -->
     <?php if (!empty($_SESSION['user_logged_in'])): ?>
       <span class="user-greeting-nav" data-testid="nav-user-name"><?php echo htmlspecialchars($_SESSION['user_name']); ?></span>
       <a href="dashboard.php?action=logout" data-testid="nav-logout">Log out</a>
     <?php else: ?>
-      <a href="login.php"<?php if ($__currentPage==='login.php') echo ' class="hub-active"'; ?>>Log in</a>
-      <a href="register.php"<?php if ($__currentPage==='register.php') echo ' class="hub-active"'; ?>>Sign up</a>
+      <!-- else, show login and register links -->
+      <a href="login.php"<?php if ($__currentPage==='login.php') echo ' class="active"'; ?>>Log in</a>
+      <a href="register.php"<?php if ($__currentPage==='register.php') echo ' class="active"'; ?>>Sign up</a>
     <?php endif; ?>
   </div>
 </header>
@@ -142,6 +146,17 @@ if (!empty($_SESSION['cart'])) foreach ($_SESSION['cart'] as $__q) $__cartCount 
 
       <h2>Or fill out the form below</h2>
       
+     <!-- <?php
+      // Display success or error messages after form submission
+      if (isset($_GET['status'])) {
+        if ($_GET['status'] == 'success') {
+          echo '<div class="alert alert-success">Thank you! Your message has been sent successfully.</div>';
+        } elseif ($_GET['status'] == 'error') {
+          echo '<div class="alert alert-error">Sorry, there was an error sending your message. Please try again.</div>';
+        }
+      }
+      ?>-->
+
         <form method="POST" class="contact-form">
         <div class="form-group">
           <label for="name">Full Name</label>
@@ -163,29 +178,30 @@ if (!empty($_SESSION['cart'])) foreach ($_SESSION['cart'] as $__q) $__cartCount 
       </form>
     </section>
   </main>
+</html>
 
-<footer class="hub-footer" role="contentinfo">
-  <div class="hub-footer-main">
-    <div class="hub-footer-logo-col">
-      <img src="images.jpg" alt="Greenfield Local Hub leaf logo" class="hub-footer-logo">
-      <div class="hub-footer-info">
-        <span class="hub-footer-brand">Greenfield Local Hub</span>
-        <p class="hub-footer-desc">Empowering sustainable farming communities<br>through innovative and customer-focused digital solutions.</p>
-        <div class="hub-footer-social">
+<footer class="footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="logo-col">
+      <img src="images.jpg" alt="Greenfield Local Hub leaf logo" class="footer-logo">
+      <div class="footer-info">
+        <span class="footer-brand">Greenfield Local Hub</span>
+        <p class="footer-desc">Empowering sustainable farming communities<br>through innovative and customer-focused digital solutions.</p>
+        <div class="footer-social">
           <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
           <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
           <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
-    <div class="hub-footer-col hub-footer-mid-col">
-      <div class="hub-contact-title">Get In Touch</div>
-      <div class="hub-contact-row"><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:info@greenfieldhub.com" class="hub-footer-link">info@greenfieldhub.com</a></div>
-      <div class="hub-contact-row"><i class="fas fa-phone" aria-hidden="true"></i><span class="hub-footer-link">+123 45 789 000</span></div>
-      <div class="hub-contact-row"><i class="fas fa-location-dot" aria-hidden="true"></i><span class="hub-footer-link">Greenfield, Springfield</span></div>
+    <div class="footer-col mid-col">
+      <div class="footer-mid-title">Get In Touch</div>
+      <div class="footer-contact-row"><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:info@greenfieldhub.com" class="footer-link">info@greenfieldhub.com</a></div>
+      <div class="footer-contact-row"><i class="fas fa-phone" aria-hidden="true"></i><span class="footer-link">+123 45 789 000</span></div>
+      <div class="footer-contact-row"><i class="fas fa-location-dot" aria-hidden="true"></i><span class="footer-link">Greenfield, Springfield</span></div>
     </div>
-    <div class="hub-footer-links">
-      <div class="hub-footer-col">
+    <div class="footer-links-group">
+      <div class="footer-col">
         <h4>Shop</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -194,7 +210,7 @@ if (!empty($_SESSION['cart'])) foreach ($_SESSION['cart'] as $__q) $__cartCount 
           <li><a href="loyalty.html">Loyalty</a></li>
         </ul>
       </div>
-      <div class="hub-footer-col">
+      <div class="footer-col">
         <h4>Account</h4>
         <ul>
           <li><a href="dashboard.php">Dashboard</a></li>
@@ -203,7 +219,7 @@ if (!empty($_SESSION['cart'])) foreach ($_SESSION['cart'] as $__q) $__cartCount 
           <li><a href="contact.php">Contact</a></li>
         </ul>
       </div>
-      <div class="hub-footer-col">
+      <div class="footer-col">
         <h4>Operations</h4>
         <ul>
           <li><a href="Delivery.php">Delivery</a></li>
@@ -212,7 +228,7 @@ if (!empty($_SESSION['cart'])) foreach ($_SESSION['cart'] as $__q) $__cartCount 
           <li><a href="Psdashboard.php">Producers Dashboard</a></li>
         </ul>
       </div>
-      <div class="hub-footer-col">
+      <div class="footer-col">
         <h4>Legal Auth</h4>
         <ul>
           <li><a href="login.php">Log in</a></li>
@@ -224,8 +240,5 @@ if (!empty($_SESSION['cart'])) foreach ($_SESSION['cart'] as $__q) $__cartCount 
       </div>
     </div>
   </div>
-  <div class="hub-footer-bar">© 2026 Greenfield Local Hub, All Rights Reserved.</div>
+  <div class="footer-bar">© 2026 Greenfield Local Hub, All Rights Reserved.</div>
 </footer>
-
-</body>
-</html>

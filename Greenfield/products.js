@@ -3,10 +3,10 @@
 // It initializes event listeners for filter checkboxes, price range inputs, sorting dropdown, add to cart buttons, and pagination buttons to provide a dynamic and responsive user experience when browsing products.
 
 document.addEventListener('DOMContentLoaded', function() {
-  initializeFilters();
-  initializeSorting();
-  initializeAddToCart();
-  initializePagination();
+  initialiseFilters();
+  initialiseSorting();
+  initialiseAddToCart();
+  initialisePagination();
 });
 
 // This function sets up event listeners for filter options, including category checkboxes and price range inputs. 

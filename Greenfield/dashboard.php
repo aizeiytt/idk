@@ -6,15 +6,18 @@
 
 
 
-// Initialize session and include database connection
+// Initialise session and include database connection
 session_start();
 require_once __DIR__ . '/includes/db.php';
+
 
 //  Check if user is authenticated
 if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true) {
     header("Location: login.php");
     exit();
 }
+
+
 
 // Fetch user data from session
 $userId = (int)$_SESSION['user_id'];
@@ -73,6 +76,17 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
     header("Location: index.html");
     exit();
 }
+// 1. Prepare the SQL statement (Secure way)
+$stmt = $pdo->prepare("SELECT full_name FROM users WHERE id = :id");
+
+// 2. Execute with the actual ID
+$stmt->execute(['id' => 1]);
+
+// 3. Fetch the result
+$user = $stmt->fetch();
+
+echo "Welcome back, " . htmlspecialchars($user['full_name']);
+?> 
 
 // this formats the user's registration date to display how long they have been a member of the Greenfield Local Hub. If the "created_at" field is available in the user data, 
 // it formats it as "Month Day, Year". If not, it defaults to "N/A".

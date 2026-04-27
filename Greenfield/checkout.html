@@ -1,0 +1,311 @@
+<?php
+// checkout.php - displays the user's cart contents, allows quantity updates and item removals, and shows the order summary with totals and a place-order button.#
+// This page is read-only and does not handle form submissions directly. Instead, it relies on cart.php to process updates and order placements, then redirects back here to show the updated state.
+
+
+// Start the session to access cart and user data.
+session_start();
+
+// Include the database connection and helper functions.
+require_once __DIR__ . '/includes/db.php';
+
+// Ensure $_SESSION['cart'] exists and is an array so later code never explodes.
+if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) $_SESSION['cart'] = [];
+
+// Local reference to the cart (id => qty) to keep the code below short.
+$cart = $_SESSION['cart'];
+
+// Running total of item count (sum of quantities, not number of distinct items).
+$cartCount = 0;
+foreach ($cart as $q) $cartCount += (int)$q;
+
+// Cart line items (one entry per distinct product) — built from the DB below.
+$items = [];
+
+// Running money subtotal before tax/shipping.
+$subtotal = 0.0;
+
+// Only hit the DB if there is at least one item in the cart.
+if (!empty($cart)) {
+    // Build a comma-separated list of product IDs, cast to int for safety.
+    $ids = implode(',', array_map('intval', array_keys($cart)));
+
+    // Fetch the matching products in a single query.
+    $res = getPdo()->query("SELECT id, name, farm, price, icon FROM products WHERE id IN ($ids)");
+
+    // Walk each product row and build the display-ready $items array.
+    while ($row = $res->fetch()) {
+        // Product ID as int (primary key).
+        $id = (int)$row['id'];
+
+        // Quantity the user put in the cart for this product.
+        $qty = (int)$cart[$id];
+
+        // Line total = unit price * quantity.
+        $line = (float)$row['price'] * $qty;
+
+        // Accumulate into the cart subtotal.
+        $subtotal += $line;
+
+        // Push a nicely-shaped item array for the template below.
+        $items[] = [
+            'id'    => $id,
+            'name'  => $row['name'],
+            'farm'  => $row['farm'],
+            'icon'  => $row['icon'] ?: '🥗', // fallback emoji if icon is empty
+            'price' => (float)$row['price'],
+            'qty'   => $qty,
+            'line'  => $line,
+        ];
+    }
+}
+
+// the tax is a flat 8% of the subtotal for simplicity. In a real app, this would depend on the customer's location and the products being purchased.
+$tax = round($subtotal * 0.08, 2);
+
+// the total is just subtotal + tax since we offer free shipping. In a real app, you would also add the shipping cost here based on the selected delivery method.
+$total = $subtotal + $tax;
+
+// the loyalty points earned from this order is 1 point per whole dollar spent (before tax/shipping). In a real app, you might have a more complex loyalty program with different earning rates for different products or promotions.
+$loyaltyEarn = (int)floor($total);
+
+// Note: we don't handle the actual order placement logic here. 
+// When the user clicks "Place Order", it will submit to cart.php which will process the order, clear the cart, and then redirect back here to show an empty basket and a success message (not implemented in this code snippet).
+// Current file's basename, used to mark the active nav item.
+$__currentPage = basename($_SERVER['PHP_SELF']);
+
+// the cart count is the total quantity of items in the cart, which we already calculated as $cartCount. We can reuse that variable here for the nav badge.
+$__cartCount = 0;
+if (!empty($_SESSION['cart'])) foreach ($_SESSION['cart'] as $__q) $__cartCount += (int)$__q;
+
+// the logged-in state is determined by checking if $_SESSION['user_logged_in'] is set and true. 
+// In a real app, you would have more robust authentication and session management, but for this example we just check a simple session variable.
+$__isLoggedIn = !empty($_SESSION['user_logged_in']);
+
+// the user's name for the nav greeting is pulled from $_SESSION['user_name'] if they are logged in. 
+// We also run it through htmlspecialchars to prevent XSS attacks in case the name contains special characters. 
+// If the user is not logged in, we set it to an empty string.
+$__userName = $__isLoggedIn ? htmlspecialchars($_SESSION['user_name']) : '';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Greenfield Local Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="checkout.css">
+  <style>
+
+  </style>
+</head>
+<body>
+
+
+<header class="gf-header-navbar" role="banner">
+  <a href="index.html" class="gf-header-home-link">
+    <div class="gf-header-left">
+      <img src="images.jpg" alt="Greenfield Local Hub Logo" class="gf-header-logo">
+      <span class="gf-header-brand">Greenfield Local Hub</span>
+    </div>
+  </a>
+  <nav class="gf-nav" aria-label="Primary">
+    <ul class="gf-header-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About us</a></li>
+      <li><a href="products.php"<?php if ($__currentPage==='products.php') echo ' class="gf-active"'; ?>>Products</a></li>
+      <li><a href="loyalty.html">Loyalty</a></li>
+      <li><a href="dashboard.php"<?php if ($__currentPage==='dashboard.php') echo ' class="gf-active"'; ?>>Dashboard</a></li>
+      <li><a href="contact.php"<?php if ($__currentPage==='contact.php') echo ' class="gf-active"'; ?>>Contact</a></li>
+      <li>
+        <a href="checkout.php"<?php if ($__currentPage==='checkout.php') echo ' class="gf-active"'; ?> data-testid="nav-basket">
+          <i class="fas fa-shopping-basket" aria-hidden="true"></i> Basket<?php if ($__cartCount > 0): ?><span class="gf-cart-badge" data-testid="cart-count"><?= $__cartCount ?></span><?php endif; ?>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="gf-auth-box">
+    <?php if ($__isLoggedIn): ?>
+      <span class="gf-user-greeting-nav" data-testid="nav-user-name"><?= $__userName ?></span>
+      <a href="dashboard.php?action=logout" data-testid="nav-logout">Log out</a>
+    <?php else: ?>
+      <a href="login.php"<?php if ($__currentPage==='login.php') echo ' class="gf-active"'; ?>>Log in</a>
+      <a href="register.php"<?php if ($__currentPage==='register.php') echo ' class="gf-active"'; ?>>Sign up</a>
+    <?php endif; ?>
+  </div>
+</header>
+
+<main id="main" role="main">
+  <section class="gf-checkout-header">
+    <div class="gf-checkout-container">
+      <h1>Your Basket</h1>
+      <p style="color:#e8f5e9;margin-top:6px;"><?= $cartCount ?> item<?= $cartCount === 1 ? '' : 's' ?> in basket</p>
+    </div>
+  </section>
+
+  <?php if (empty($items)): ?>
+    
+    <section class="gf-checkout-main">
+      <div class="gf-checkout-container">
+        <div class="gf-empty-cart" data-testid="empty-cart">
+          <i class="fas fa-shopping-basket" aria-hidden="true"></i>
+          <h2>Your basket is empty</h2>
+          <p>Browse our fresh produce and add your favourites.</p>
+          <a href="products.php" class="gf-btn-primary" style="display:inline-block;margin-top:18px;padding:10px 22px;background:#1b5e20;color:#fff;border-radius:6px;text-decoration:none;">Shop Now</a>
+        </div>
+      </div>
+    </section>
+  <?php else: ?>
+    
+    <section class="gf-checkout-main">
+      <div class="gf-checkout-container">
+        <form id="gf-checkoutForm" class="gf-checkout-grid" action="cart.php" method="POST">
+          <input type="hidden" name="action" value="place_order">
+
+          
+          <div class="gf-checkout-left">
+
+            
+            <section class="gf-form-section">
+              <h2>Order Summary</h2>
+              <div class="gf-cart-items" id="cartItems" data-testid="cart-items">
+                <?php foreach ($items as $it): ?>
+                <div class="gf-cart-item" data-testid="cart-row-<?= $it['id'] ?>">
+                  <div class="gf-item-image" style="font-size:36px;"><?= htmlspecialchars($it['icon']) ?></div>
+                  <div class="gf-item-details">
+                    <h4><?= htmlspecialchars($it['name']) ?></h4>
+                    <p><?= htmlspecialchars($it['farm']) ?></p>
+                  </div>
+                  <div class="gf-item-price" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+                    <form class="gf-qty-form" action="cart.php" method="POST">
+                      <input type="hidden" name="action" value="update">
+                      <input type="hidden" name="id" value="<?= $it['id'] ?>">
+                      <input type="hidden" name="redirect" value="checkout.php">
+                      <label style="font-size:12px;">Qty</label>
+                      <input type="number" name="qty" value="<?= $it['qty'] ?>" min="0" max="99" data-testid="qty-input-<?= $it['id'] ?>">
+                      <button type="submit" data-testid="qty-update-<?= $it['id'] ?>">Update</button>
+                    </form>
+                    <span class="gf-price">$<?= number_format($it['line'], 2) ?></span>
+                    <a href="cart.php?action=remove&id=<?= $it['id'] ?>&redirect=checkout.php" class="gf-btn-remove" data-testid="remove-<?= $it['id'] ?>"><i class="fas fa-trash" aria-hidden="true"></i> Remove</a>
+                  </div>
+                </div>
+                <?php endforeach; ?>
+              </div>
+            </section>
+
+            <section class="gf-form-section">
+              <h2>Delivery Method</h2>
+              <div class="gf-delivery-options">
+                <label class="gf-delivery-option selected">
+                  <input type="radio" name="delivery" value="standard" data-cost="0" checked>
+                  <div class="gf-option-content">
+                    <span class="gf-option-title">Standard Delivery</span>
+                    <span class="gf-option-time">24-48 hours</span>
+                  </div>
+                  <span class="gf-option-price">FREE</span>
+                </label>
+                <label class="gf-delivery-option">
+                  <input type="radio" name="delivery" value="express" data-cost="5.99">
+                  <div class="gf-option-content">
+                    <span class="gf-option-title">Express Delivery</span>
+                    <span class="gf-option-time">24 hours</span>
+                  </div>
+                  <span class="gf-option-price">$5.99</span>
+                </label>
+              </div>
+            </section>
+          </div>
+
+          
+          <div class="gf-checkout-right">
+            <div class="gf-order-summary">
+              <h3>Order Summary</h3>
+              <div class="gf-summary-item"><span>Subtotal</span><span data-testid="subtotal">$<?= number_format($subtotal, 2) ?></span></div>
+              <div class="gf-summary-item"><span>Shipping</span><span class="gf-free">FREE</span></div>
+              <div class="gf-summary-item"><span>Tax (8%)</span><span data-testid="tax">$<?= number_format($tax, 2) ?></span></div>
+              <div class="gf-summary-divider"></div>
+              <div class="gf-summary-total"><span>Total</span><span data-testid="total">$<?= number_format($total, 2) ?></span></div>
+              <div class="gf-loyalty-info"><i class="fas fa-star" aria-hidden="true"></i> <span>Earn <strong><?= $loyaltyEarn ?></strong> loyalty points</span></div>
+              <?php if (!$__isLoggedIn): ?>
+                <a href="login.php" class="gf-btn-place-order" style="display:block;text-align:center;text-decoration:none;" data-testid="login-to-checkout">
+                  <i class="fas fa-lock" aria-hidden="true"></i> Log in to Place Order
+                </a>
+              <?php else: ?>
+                <button type="submit" class="gf-btn-place-order" data-testid="place-order-btn">
+                  <i class="fas fa-lock" aria-hidden="true"></i> Place Order
+                </button>
+              <?php endif; ?>
+              <a href="products.php" class="gf-btn-continue-shopping"><i class="fas fa-arrow-left" aria-hidden="true"></i> Continue Shopping</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  <?php endif; ?>
+</main>
+
+<footer class="gf-footer" role="contentinfo">
+  <div class="gf-footer-main">
+    <div class="gf-footer-logo-col">
+      <img src="images.jpg" alt="Greenfield Local Hub leaf logo" class="gf-footer-logo">
+      <div class="gf-footer-info">
+        <span class="gf-footer-brand">Greenfield Local Hub</span>
+        <p class="gf-footer-desc">Empowering sustainable farming communities<br>through innovative and customer-focused digital solutions.</p>
+        <div class="gf-footer-social">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="gf-footer-col gf-footer-mid-col">
+      <div class="gf-contact-title">Get In Touch</div>
+      <div class="gf-contact-row"><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:info@greenfieldhub.com" class="gf-footer-link">info@greenfieldhub.com</a></div>
+      <div class="gf-contact-row"><i class="fas fa-phone" aria-hidden="true"></i><span class="gf-footer-link">+123 45 789 000</span></div>
+      <div class="gf-contact-row"><i class="fas fa-location-dot" aria-hidden="true"></i><span class="gf-footer-link">Greenfield, Springfield</span></div>
+    </div>
+    <div class="gf-footer-links">
+      <div class="gf-footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="products.php">Products</a></li>
+          <li><a href="loyalty.html">Loyalty</a></li>
+        </ul>
+      </div>
+      <div class="gf-footer-col">
+        <h4>Account</h4>
+        <ul>
+          <li><a href="dashboard.php">Dashboard</a></li>
+          <li><a href="checkout.php">Basket</a></li>
+          <li><a href="checkout.php">Checkout</a></li>
+          <li><a href="contact.php">Contact</a></li>
+        </ul>
+      </div>
+      <div class="gf-footer-col">
+        <h4>Operations</h4>
+        <ul>
+          <li><a href="Delivery.php">Delivery</a></li>
+          <li><a href="stock.php">Stock</a></li>
+          <li><a href="manage.html">Management</a></li>
+          <li><a href="Psdashboard.php">Producers Dashboard</a></li>
+        </ul>
+      </div>
+      <div class="gf-footer-col">
+        <h4>Legal Auth</h4>
+        <ul>
+          <li><a href="login.php">Log in</a></li>
+          <li><a href="register.php">Sign up</a></li>
+          <li><a href="legal.html">Legal</a></li>
+          <li><a href="legal.html#privacy">Privacy Policy</a></li>
+          <li><a href="legal.html#terms">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="gf-footer-bar">© 2026 Greenfield Local Hub, All Rights Reserved.</div>
+</footer>
+</body>
+</html>

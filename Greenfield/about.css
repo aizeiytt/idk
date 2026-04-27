@@ -24,8 +24,9 @@ body {
   line-height: 1.6;
 }
 
-/* Global header (kept original, not renamed) */
-.header-navbar {
+/* ===== HEADER ===== */
+/* Global header styling */
+.gf-header-navbar {
   background: var(--gf-about-light);
   display: flex;
   align-items: center;
@@ -39,19 +40,19 @@ body {
   min-height: 60px;
 }
 
-.header-left {
+.gf-header-left {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.header-logo {
+.gf-header-logo {
   height: 32px;
   width: auto;
   flex-shrink: 0;
 }
 
-.header-brand {
+.gf-header-brand {
   font-size: 0.95em;
   font-weight: 600;
   color: var(--gf-about-primary);
@@ -59,7 +60,7 @@ body {
   white-space: nowrap;
 }
 
-.header-home-link {
+.gf-header-home-link {
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -67,16 +68,16 @@ body {
   flex-shrink: 0;
 }
 
-.header-home-link:focus {
+.gf-header-home-link:focus {
   outline: 2px solid #fbae17;
 }
 
-nav {
+.gf-nav {
   flex: 1;
   margin: 0 40px;
 }
 
-.header-links {
+.gf-header-links {
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -86,11 +87,11 @@ nav {
   flex-wrap: nowrap;
 }
 
-.header-links li {
+.gf-header-links li {
   white-space: nowrap;
 }
 
-.header-links a {
+.gf-header-links a {
   color: var(--gf-about-primary);
   text-decoration: none;
   font-weight: 400;
@@ -99,24 +100,24 @@ nav {
   transition: color 0.15s;
 }
 
-.header-links a:hover,
-.header-links a:focus {
+.gf-header-links a:hover,
+.gf-header-links a:focus {
   color: #007960;
 }
 
-.header-links a.active {
+.gf-header-links a.gf-active {
   font-weight: 500;
   color: #006c58;
 }
 
-.header-auth {
+.gf-auth-box {
   display: flex;
   gap: 25px;
   flex-shrink: 0;
   align-items: center;
 }
 
-.header-auth a {
+.gf-auth-box a {
   color: var(--gf-about-primary);
   text-decoration: none;
   font-weight: 400;
@@ -125,40 +126,40 @@ nav {
   white-space: nowrap;
 }
 
-.header-auth a:hover,
-.header-auth a:focus {
+.gf-auth-box a:hover,
+.gf-auth-box a:focus {
   color: #007960;
 }
 
 /* Header responsive adjustments */
 @media (max-width: 1100px) {
-  nav {
+  .gf-nav {
     margin: 0 20px;
   }
-  .header-links {
+  .gf-header-links {
     gap: 20px;
   }
 }
 
 @media (max-width: 900px) {
-  .header-navbar {
+  .gf-header-navbar {
     flex-wrap: wrap;
     padding: 12px 20px;
   }
-  .header-home-link {
+  .gf-header-home-link {
     order: 1;
     flex: 0 0 auto;
   }
-  nav {
+  .gf-nav {
     order: 3;
     flex: 0 0 100%;
     margin: 12px 0;
   }
-  .header-links {
+  .gf-header-links {
     justify-content: flex-start;
     gap: 15px;
   }
-  .header-auth {
+  .gf-auth-box {
     order: 2;
     flex: 1;
     justify-content: flex-end;
@@ -166,17 +167,17 @@ nav {
 }
 
 @media (max-width: 650px) {
-  .header-navbar {
+  .gf-header-navbar {
     padding: 10px 15px;
   }
-  .header-brand {
+  .gf-header-brand {
     font-size: 0.85em;
   }
-  .header-links {
+  .gf-header-links {
     gap: 10px;
     font-size: 0.85em;
   }
-  .header-auth {
+  .gf-auth-box {
     gap: 12px;
     font-size: 0.85em;
   }
@@ -310,6 +311,7 @@ nav {
   line-height: 1.8;
   margin: 0;
 }
+
 /* Why section layout container */
 .gf-about-why-container {
   max-width: 1200px;
@@ -642,6 +644,7 @@ nav {
   color: var(--gf-about-text-light);
   line-height: 1.6;
 }
+
 /* CTA section background + spacing */
 .gf-about-cta-section {
   background: linear-gradient(135deg, var(--gf-about-primary), #003d35);
@@ -719,193 +722,238 @@ nav {
   transform: translateY(-3px);
 }
 
-/* ===== FOOTER (GLOBAL — UNCHANGED) ===== */
+/* ===== FOOTER ===== */
 /* Footer background + text color */
-.footer {
+.gf-footer {
   background: var(--gf-about-primary);
-  color: #fff;
+  color: white;
 }
 
 /* Footer main layout */
-.footer-main {
-  display: flex;
-  justify-content: space-between;
+.gf-footer-main {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 3fr;
+  gap: 60px;
+  padding: 60px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
   align-items: flex-start;
-  padding: 20px 5vw 10px 5vw;
-  gap: 22px;
-  flex-wrap: wrap;
 }
 
-/* Footer logo + brand block */
-.logo-col {
+/* Left column: Logo + Brand + Description + Social */
+.gf-footer-logo-col {
   display: flex;
-  align-items: flex-start;
-  gap: 13px;
-  min-width: 190px;
-  max-width: 290px;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Logo + Brand wrapper */
+.gf-footer-logo-col > div:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 /* Footer logo image */
-.footer-logo {
-  height: 32px;
-  margin-top: 2px;
+.gf-footer-logo {
+  height: 40px;
+  width: auto;
   flex-shrink: 0;
 }
 
 /* Footer brand text */
-.footer-brand {
+.gf-footer-brand {
   display: block;
-  font-weight: bold;
-  font-size: 1.05em;
-  margin-bottom: 2px;
-  color: #fff;
+  font-weight: 700;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  color: white;
 }
 
 /* Footer info text wrapper */
-.footer-info {
+.gf-footer-info {
   flex: 1;
 }
 
 /* Footer description text */
-.footer-desc {
-  margin: 0 0 7px 0;
-  color: #fff;
-  font-size: 0.97em;
-  line-height: 1.5;
+.gf-footer-desc {
+  margin: 0 0 15px 0;
+  color: white;
+  font-size: 0.95em;
+  line-height: 1.6;
 }
 
 /* Social icon row */
-.footer-social {
+.gf-footer-social {
   display: flex;
-  gap: 10px;
-  margin-top: 6px;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 /* Social icon buttons */
-.footer-social a {
+.gf-footer-social a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 29px;
-  height: 29px;
-  background: #222;
-  color: #fff;
+  width: 36px;
+  height: 36px;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
   border-radius: 6px;
-  font-size: 1.1em;
-  transition: background 0.2s, color 0.2s;
+  font-size: 1em;
+  transition: all 0.2s;
   text-decoration: none;
 }
 
 /* Social icon hover color */
-.footer-social a:hover,
-.footer-social a:focus {
+.gf-footer-social a:hover,
+.gf-footer-social a:focus {
   background: var(--gf-about-secondary);
   color: var(--gf-about-primary);
 }
 
-/* Footer link groups */
-.footer-links-group {
+/* Middle column: Get In Touch */
+.gf-footer-mid-col {
   display: flex;
-  gap: 19px;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Footer section title */
+.gf-contact-title {
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--gf-about-secondary);
+  margin-bottom: 5px;
+}
+
+/* Footer contact row layout */
+.gf-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+/* Footer contact icons */
+.gf-contact-row i {
+  color: var(--gf-about-secondary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Footer contact links */
+.gf-footer-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+/* Footer contact link hover */
+.gf-footer-link:hover,
+.gf-footer-link:focus {
+  color: var(--gf-about-secondary);
+}
+
+/* Right column: Links Grid */
+.gf-footer-links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+/* Footer column wrapper */
+.gf-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Footer column title */
+.gf-footer-col h4 {
+  font-size: 0.95em;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 5px;
 }
 
 /* Footer list reset */
-.footer-col ul {
+.gf-footer-col ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 /* Footer list spacing */
-.footer-col ul li {
-  margin-bottom: 4px;
+.gf-footer-col ul li {
+  margin: 0;
 }
 
 /* Footer link styling */
-.footer-col ul a {
-  color: #fff;
+.gf-footer-col ul a {
+  color: white;
   text-decoration: none;
-  font-size: 0.97em;
-  padding: 2.5px 0;
+  font-size: 0.9em;
+  padding: 2px 0;
   transition: color 0.15s;
   display: inline-block;
 }
 
 /* Footer link hover highlight */
-.footer-col ul a.active,
-.footer-col ul a:hover,
-.footer-col ul a:focus {
+.gf-footer-col ul a:hover,
+.gf-footer-col ul a:focus {
   color: var(--gf-about-secondary);
   font-weight: 600;
-}
-
-/* Middle column width */
-.mid-col {
-  min-width: 180px;
-  max-width: 240px;
-  margin-left: 18px;
-  margin-right: 18px;
-}
-
-/* Footer section title */
-.footer-mid-title {
-  font-size: 1.08em;
-  font-weight: 600;
-  margin-bottom: 6px;
-  color: var(--gf-about-secondary);
-}
-
-/* Footer contact row layout */
-.footer-contact-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 7px;
-  font-size: 0.98em;
-  gap: 7px;
-}
-
-/* Footer contact icons */
-.footer-contact-row i {
-  color: var(--gf-about-secondary);
-}
-
-/* Footer contact links */
-.footer-link {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.18s;
-}
-
-/* Footer contact link hover */
-.footer-link:hover,
-.footer-link:focus {
-  color: var(--gf-about-secondary);
 }
 
 /* Footer bottom bar */
-.footer-bar {
+.gf-footer-bar {
   background: var(--gf-about-secondary);
   color: #222;
   text-align: center;
-  font-size: 0.99em;
-  padding: 5px 0;
-  letter-spacing: 0.03em;
-  font-weight: 500;
+  font-size: 0.95em;
+  padding: 12px 0;
+  letter-spacing: 0.02em;
+  font-weight: 600;
 }
 
 /* Footer responsive stacking */
-@media (max-width: 950px) {
-  .footer-main {
-    flex-direction: column;
-    align-items: stretch;
+@media (max-width: 1200px) {
+  .gf-footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 50px 30px;
   }
-  .footer-links-group {
-    flex-direction: row;
-    gap: 14px;
+
+  .gf-footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
-/* ===== RESPONSIVE ADJUSTMENTS FOR ABOUT PAGE ===== */
+@media (max-width: 768px) {
+  .gf-footer-main {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 40px 20px;
+  }
+
+  .gf-footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .gf-footer-mid-col {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* RESPONSIVE ADJUSTMENTS FOR ABOUT PAGE*/
 @media (max-width: 1024px) {
   .gf-about-hero-container,
   .gf-about-why-container {
@@ -946,7 +994,7 @@ nav {
   }
 
   section h2 {
-    font-size: 28px !important;
+    font-size: 28px;
   }
 
   .gf-about-values-grid,
@@ -976,5 +1024,9 @@ nav {
 
   .gf-about-why-list li {
     font-size: 13px;
+  }
+
+  .gf-footer-links {
+    grid-template-columns: 1fr;
   }
 }
